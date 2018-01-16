@@ -12,29 +12,49 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.snow.test002">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
-		<level value="info" />
+		<level value="off" />
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="info" />
+		<level value="off" />
 	</logger>
 	
 	<logger name="org.springframework.context">
-		<level value="info" />
+		<level value="off" />
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="info" />
+		<level value="off" />
 	</logger>
+	
+	<!-- Query Loggers -->
+	<logger name="log4jdbc.debug">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.connection">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.audit">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.sqltiming">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.resultset">
+		<level value="off" />
+	</logger>
+    <logger name="jdbc.resultsettable"> 
+        <level value="INFO"/> 
+    </logger> 
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	

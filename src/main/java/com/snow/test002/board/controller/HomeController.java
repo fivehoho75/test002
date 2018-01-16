@@ -1,4 +1,4 @@
-package com.snow.test002;
+package com.snow.test002.board.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

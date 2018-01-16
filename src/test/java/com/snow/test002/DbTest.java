@@ -2,6 +2,7 @@ package com.snow.test002;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,6 +19,7 @@ public class DbTest {
 		    assertThat(con, is(notNullValue()));
 	    } catch (Exception e) {
             e.printStackTrace();
+            fail(e.toString());
         }
 	}
 }

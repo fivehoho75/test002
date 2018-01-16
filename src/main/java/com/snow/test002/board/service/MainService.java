@@ -1,4 +1,4 @@
-package com.snow.test002.service;
+package com.snow.test002.board.service;
 
 import java.util.List;
 import java.util.Map;

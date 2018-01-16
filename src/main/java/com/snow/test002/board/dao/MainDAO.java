@@ -1,4 +1,4 @@
-package com.snow.test002.dao;
+package com.snow.test002.board.dao;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +12,6 @@ public class MainDAO  extends AbstractDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) {
-		return (List<Map<String, Object>>)selectList("main.selectBoardList", map);
+		return (List<Map<String, Object>>)selectList("myDb.selectBoardList", map);
 	}
 }
