@@ -20,4 +20,9 @@ public class MainServiceImpl implements MainService {
 		return mainDAO.selectBoardList(map);
 	}
 
+	@Override
+	public int insertBoard(Map<String, Object> map) throws Exception {
+		return mainDAO.insertBoard(map);
+	}
+
 }

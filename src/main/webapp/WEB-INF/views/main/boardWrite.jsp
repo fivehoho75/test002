@@ -9,22 +9,54 @@
     <div class="container">
     	<div class="form-group">
     		<label for="TITLE">제목</label>
-    		<input type="text" class="form-control" id="TITLE" name="TITLE">
+    		<input type="text" class="form-control" id="title" name="title">
     	</div>
     	<div class="form-group">
-    		 <textarea class="form-control" rows="20" cols="100" id="CONTENTS" name="CONTENTS"></textarea>
+    		 <textarea class="form-control" rows="20" cols="100" id="contents" name="contents"></textarea>
     	</div>
         
-        <button type="button" class="btn btn-outline-primary">작성하기</button>
-		<button type="button" class="btn btn-outline-info">목록으로</button>
+        <button id="write" type="button" class="btn btn-outline-primary">작성하기</button>
+		<button id="list" type="button" class="btn btn-outline-info">목록으로</button>
     </div>
     </form>
      
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
     <script type="text/javascript">
         $(document).ready(function(){
-                     
+        	$("#list").click(function(e) {
+        		e.preventDefault();
+        		fn_openBoardList();
+        	});
+             
+            $("#write").click(function(e) {
+                e.preventDefault();
+                fn_insertBoard();
+            });         
         });
+        
+        function fn_openBoardList(){
+        	$(location).attr('href', "<c:url value='/selectBoardList.do'/>");
+        }
+        
+        function fn_insertBoard(){
+        	var formData = $("#frm").serialize();
+
+        	$.ajax({
+                url : "/insertBoard.do",
+                type : "POST",
+                cache : false,
+                data : formData,
+                success : function(response){
+                	alert(response.msg);
+                	$(location).attr('href', "<c:url value='/selectBoardList.do'/>");
+               
+                },
+                error : function(request,status,error) {
+                	alert("저장중 에러가 발생하였습니다.");
+                }
+            });
+        }
+        
     </script>
 </body>
 </html>

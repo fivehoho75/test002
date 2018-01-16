@@ -12,6 +12,10 @@ public class MainDAO  extends AbstractDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) {
-		return (List<Map<String, Object>>)selectList("myDb.selectBoardList", map);
+		return (List<Map<String, Object>>)selectList("main.selectBoardList", map);
+	}
+
+	public int insertBoard(Map<String, Object> map) {
+		return insert("main.insertBoard", map);
 	}
 }

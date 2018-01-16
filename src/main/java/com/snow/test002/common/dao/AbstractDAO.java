@@ -10,6 +10,18 @@ public class AbstractDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	public int insert(String queryId, Object params){
+        return sqlSession.insert(queryId, params);
+    }
+     
+    public int update(String queryId, Object params){
+        return sqlSession.update(queryId, params);
+    }
+     
+    public int delete(String queryId, Object params){
+        return sqlSession.delete(queryId, params);
+    }
+
 	public Object selectOne(String queryId){
 		return sqlSession.selectOne(queryId);
 	}
