@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,23 +28,20 @@ public class MainController {
 	private MainService mainService;
 	
 	@RequestMapping(value="/selectBoardList.do")
-	public ModelAndView selectBoardList(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/main/boardList");
-		
-		logger.info("selectBoardList ==");
+	public String selectBoardList(CommandMap commandMap, Model model) throws Exception {
 		List<Map<String,Object>> list = mainService.selectBoardList(commandMap.getMap());
-        mv.addObject("list", list);
+        model.addAttribute("list", list);
         
-		return mv;	
+		return "/main/boardList";	
 	}
 	
 	@RequestMapping(value="/openBoardWrite.do")
-	public String openBoardWrite(CommandMap commandMap) throws Exception{     
+	public String openBoardWrite(CommandMap commandMap, Model model) throws Exception{     
 	    return "/main/boardWrite";
 	}
 	
 	@RequestMapping(value="/insertBoard.do")
-	public @ResponseBody ReturnVO insertBoard(CommandMap commandMap) throws Exception{     
+	public @ResponseBody ReturnVO insertBoard(CommandMap commandMap, Model model) throws Exception{     
 	    ReturnVO returnVO = new ReturnVO();
 		int nAffected = mainService.insertBoard(commandMap.getMap());
 		
@@ -59,22 +57,11 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/openBoardDetail.do")
-	public ModelAndView openBoardDetail(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("/main/boardDetail");
-	     
-	    if(commandMap.isEmpty() == false){
-	        Iterator<Entry<String,Object>> iterator = commandMap.getMap().entrySet().iterator();
-	        Entry<String,Object> entry = null;
-	        while(iterator.hasNext()){
-	            entry = iterator.next();
-	            logger.debug("key : "+entry.getKey()+", value : "+entry.getValue());
-	        }
-	    }
-	    
+	public String openBoardDetail(CommandMap commandMap, Model model) throws Exception{  
 	    Map<String,Object> map = mainService.selectBoardDetail(commandMap.getMap());
-	    mv.addObject("map", map);
+	    model.addAttribute("map", map);
 	     
-	    return mv;
+	    return "/main/boardDetail";
 	}
 	
 	@RequestMapping(value="/testMapArgumentResolver.do")
