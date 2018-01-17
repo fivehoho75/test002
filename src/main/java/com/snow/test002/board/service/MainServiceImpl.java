@@ -25,4 +25,11 @@ public class MainServiceImpl implements MainService {
 		return mainDAO.insertBoard(map);
 	}
 
+	@Override
+	public Map<String, Object> selectBoardDetail(Map<String, Object> map) {
+		mainDAO.updateHitCnt(map);
+	    Map<String, Object> resultMap = mainDAO.selectBoardDetail(map);
+	    return resultMap;
+	}
+
 }

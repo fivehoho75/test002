@@ -10,6 +10,7 @@
 		 WHERE DEL_GB = 'N'
 		 ORDER BY IDX DESC
      </select>
+     
      <insert id="insertBoard" parameterType="hashmap">
     <![CDATA[
         INSERT
@@ -17,4 +18,21 @@
 		VALUES (#{title}, #{contents}, 0, 'N', 'admin' )
     ]]>
 	</insert>
+	
+	<update id="updateHitCnt" parameterType="hashmap">
+	        UPDATE TB_BOARD
+			   SET HIT_CNT = IFNULL(HIT_CNT, 0) + 1
+			 WHERE IDX = #{idx}
+	</update>
+ 
+	<select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
+        	SELECT IDX
+			     , HIT_CNT
+			     , CREA_ID
+			     , CREA_DTM
+			     , TITLE
+			     , CONTENTS
+			  FROM TB_BOARD
+			 WHERE IDX = #{idx}    
+	</select>
 </mapper>

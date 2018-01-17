@@ -18,4 +18,13 @@ public class MainDAO  extends AbstractDAO {
 	public int insertBoard(Map<String, Object> map) {
 		return insert("main.insertBoard", map);
 	}
+
+	public int updateHitCnt(Map<String, Object> map) {
+		return update("main.updateHitCnt", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectBoardDetail(Map<String, Object> map) {
+		return (Map<String, Object>) selectOne("main.selectBoardDetail", map);
+	}
 }

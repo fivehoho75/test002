@@ -5,6 +5,7 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
+	<div class="pt-5 pb-5 mx-auto" style="width: 200px;"><h2>게시판 쓰기</h2></div>
     <form id="frm">
     <div class="container">
     	<div class="form-group">
@@ -12,11 +13,13 @@
     		<input type="text" class="form-control" id="title" name="title">
     	</div>
     	<div class="form-group">
-    		 <textarea class="form-control" rows="20" cols="100" id="contents" name="contents"></textarea>
+    		 <textarea class="form-control" rows="15" cols="100" id="contents" name="contents"></textarea>
     	</div>
         
-        <button id="write" type="button" class="btn btn-outline-primary">작성하기</button>
-		<button id="list" type="button" class="btn btn-outline-info">목록으로</button>
+        <div class="float-right">
+	        <button id="write" type="button" class="btn btn-outline-primary">작성하기</button>
+			<button id="list" type="button" class="btn btn-outline-info">목록으로</button>
+		</div>
     </div>
     </form>
      

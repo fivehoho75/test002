@@ -27,11 +27,11 @@ public class MainController {
 	private MainService mainService;
 	
 	@RequestMapping(value="/selectBoardList.do")
-	public ModelAndView selectBoardList( Map<String, Object> commandMap ) throws Exception {
+	public ModelAndView selectBoardList(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("/main/boardList");
 		
 		logger.info("selectBoardList ==");
-		List<Map<String,Object>> list = mainService.selectBoardList(commandMap);
+		List<Map<String,Object>> list = mainService.selectBoardList(commandMap.getMap());
         mv.addObject("list", list);
         
 		return mv;	
@@ -57,7 +57,26 @@ public class MainController {
 		
 	    return returnVO;
 	}
-		
+	
+	@RequestMapping(value="/openBoardDetail.do")
+	public ModelAndView openBoardDetail(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("/main/boardDetail");
+	     
+	    if(commandMap.isEmpty() == false){
+	        Iterator<Entry<String,Object>> iterator = commandMap.getMap().entrySet().iterator();
+	        Entry<String,Object> entry = null;
+	        while(iterator.hasNext()){
+	            entry = iterator.next();
+	            logger.debug("key : "+entry.getKey()+", value : "+entry.getValue());
+	        }
+	    }
+	    
+	    Map<String,Object> map = mainService.selectBoardDetail(commandMap.getMap());
+	    mv.addObject("map", map);
+	     
+	    return mv;
+	}
+	
 	@RequestMapping(value="/testMapArgumentResolver.do")
 	public ModelAndView testMapArgumentResolver(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("");

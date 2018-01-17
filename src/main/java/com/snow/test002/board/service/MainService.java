@@ -6,4 +6,5 @@ import java.util.Map;
 public interface MainService {
 	List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception;
 	int insertBoard(Map<String, Object> map) throws Exception;
+	Map<String, Object> selectBoardDetail(Map<String, Object> map);
 }
