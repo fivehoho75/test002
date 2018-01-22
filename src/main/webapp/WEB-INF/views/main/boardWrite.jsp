@@ -16,9 +16,9 @@
     		 <textarea class="form-control" rows="15" cols="100" id="contents" name="contents"></textarea>
     	</div>
         
-        <div class="float-right">
-	        <button id="write" type="button" class="btn btn-outline-primary">작성하기</button>
-			<button id="list" type="button" class="btn btn-outline-info">목록으로</button>
+        <div class="float-right form-actions">
+	        <button id="write" type="button" class="btn btn-primary">작성하기</button>
+			<button id="list" type="button" class="btn btn-info">목록으로</button>
 		</div>
     </div>
     </form>

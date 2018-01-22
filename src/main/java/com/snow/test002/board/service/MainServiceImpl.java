@@ -32,4 +32,9 @@ public class MainServiceImpl implements MainService {
 	    return resultMap;
 	}
 
+	@Override
+	public int updateBoard(Map<String, Object> map) {
+		return mainDAO.updateBoard(map);
+	}
+
 }

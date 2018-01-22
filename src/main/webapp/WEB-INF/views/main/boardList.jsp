@@ -44,7 +44,9 @@
 		    </tbody>
 		</table>
 		<div class="float-right">
-			<button id="write" type="button" class="btn btn-outline-primary">글쓰기</button>
+			<button id="write" type="button" class="btn btn-primary">
+				글쓰기
+			</button>
 		</div>
 	</div>
 	

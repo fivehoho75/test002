@@ -27,4 +27,8 @@ public class MainDAO  extends AbstractDAO {
 	public Map<String, Object> selectBoardDetail(Map<String, Object> map) {
 		return (Map<String, Object>) selectOne("main.selectBoardDetail", map);
 	}
+
+	public int updateBoard(Map<String, Object> map) {
+		return update("main.updateBoard", map);
+	}
 }

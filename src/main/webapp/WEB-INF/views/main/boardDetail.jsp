@@ -36,9 +36,9 @@
 	            </tr>
 	        </tbody>
 	    </table>
-	     <div class="float-right">
-		    <button id="update" type="button" class="btn btn-outline-primary">수정하기</button>
-			<button id="list" type="button" class="btn btn-outline-info">목록으로</button>
+	    <div class="float-right form-actions">
+		    <button id="update" type="button" class="btn btn-primary">수정하기</button>
+			<button id="list" type="button" class="btn btn-info"><i class="icon-search"></i>목록으로</button>
 	    </div>
      </div>
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
@@ -63,7 +63,7 @@
             var idx = "${map.IDX}";
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/openBoardUpdate.do' />");
-            comSubmit.addParam("IDX", idx);
+            comSubmit.addParam("idx", idx);
             comSubmit.submit();
         }
     </script>

@@ -11,6 +11,17 @@
 		 ORDER BY IDX DESC
      </select>
      
+     <select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
+        	SELECT IDX
+			     , HIT_CNT
+			     , CREA_ID
+			     , CREA_DTM
+			     , TITLE
+			     , CONTENTS
+			  FROM TB_BOARD
+			 WHERE IDX = #{idx}    
+	</select>
+	
      <insert id="insertBoard" parameterType="hashmap">
     <![CDATA[
         INSERT
@@ -25,14 +36,15 @@
 			 WHERE IDX = #{idx}
 	</update>
  
-	<select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
-        	SELECT IDX
-			     , HIT_CNT
-			     , CREA_ID
-			     , CREA_DTM
-			     , TITLE
-			     , CONTENTS
-			  FROM TB_BOARD
-			 WHERE IDX = #{idx}    
-	</select>
+	<update id="updateBoard" parameterType="hashmap">
+    	<![CDATA[
+        UPDATE TB_BOARD
+        SET
+            TITLE = #{title},
+            CONTENTS = #{contents}
+        WHERE
+            IDX = #{idx}   
+    	]]>
+	</update>
+
 </mapper>
