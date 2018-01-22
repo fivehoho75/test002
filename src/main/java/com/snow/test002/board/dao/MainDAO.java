@@ -31,4 +31,12 @@ public class MainDAO  extends AbstractDAO {
 	public int updateBoard(Map<String, Object> map) {
 		return update("main.updateBoard", map);
 	}
+
+	public int deleteBoard(Map<String, Object> map) {
+		return update("main.deleteBoard", map);
+	}
+
+	public void insertFile(Map<String, Object> map) {
+		insert("main.insertFile", map);
+	}
 }

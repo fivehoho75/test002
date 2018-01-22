@@ -94,10 +94,22 @@
         }
          
         function fn_deleteBoard(){
-            var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/deleteBoard.do' />");
-            comSubmit.addParam("IDX", $("#IDX").val());
-            comSubmit.submit();
+        	var formData = $("#frm").serialize();
+
+        	$.ajax({
+                url : "/deleteBoard.do",
+                type : "POST",
+                cache : false,
+                data : formData,
+                success : function(response){
+                	alert(response.msg);
+                	$(location).attr('href', "<c:url value='/selectBoardList.do'/>");
+               
+                },
+                error : function(request,status,error) {
+                	alert("저장중 에러가 발생하였습니다.");
+                }
+            });
              
         }
     </script>

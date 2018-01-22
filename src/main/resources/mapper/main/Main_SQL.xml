@@ -22,14 +22,27 @@
 			 WHERE IDX = #{idx}    
 	</select>
 	
-     <insert id="insertBoard" parameterType="hashmap">
+     <insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="idx" keyColumn="IDX">
     <![CDATA[
         INSERT
 		  INTO TB_BOARD ( TITLE, CONTENTS, HIT_CNT, DEL_GB, CREA_ID )
 		VALUES (#{title}, #{contents}, 0, 'N', 'admin' )
     ]]>
+    <selectKey keyProperty="idx" resultType="int">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
 	</insert>
 	
+	<insert id="insertFile" parameterType="hashmap">
+        INSERT
+		  INTO TB_FILE ( BOARD_IDX, ORIGINAL_FILE_NAME, STORED_FILE_NAME, FILE_SIZE, CREA_ID )
+		VALUES ( #{BOARD_IDX}
+		             , #{ORIGINAL_FILE_NAME}
+		             , #{STORED_FILE_NAME}
+		             , #{FILE_SIZE}
+		             , 'admin' )
+	</insert>
+
 	<update id="updateHitCnt" parameterType="hashmap">
 	        UPDATE TB_BOARD
 			   SET HIT_CNT = IFNULL(HIT_CNT, 0) + 1
@@ -46,5 +59,12 @@
             IDX = #{idx}   
     	]]>
 	</update>
-
+	
+	<update id="deleteBoard" parameterType="hashmap">
+        UPDATE TB_BOARD
+        SET
+            DEL_GB = 'Y'
+        WHERE
+            IDX = #{idx}
+	</update>
 </mapper>
