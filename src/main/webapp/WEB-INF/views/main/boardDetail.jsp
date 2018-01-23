@@ -5,9 +5,11 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
-	<div class="container">
-		<div class="pt-5 pb-5 mx-auto" style="width: 200px;"><h2>게시판 상세</h2></div>
-	    <table class="table">
+	<div class="ui container">
+		<div class="ui grid" style="margin-top:5px;margin-bottom:5px;">
+			<div class="center aligned column"><h2>게시판 상세</h2></div>
+		</div>
+	    <table class="ui table">
 	        <colgroup>
 	            <col width="15%"/>
 	            <col width="35%"/>
@@ -34,24 +36,40 @@
 	            <tr>
 	                <td colspan="4">${fn:replace(map.CONTENTS, crlf, "<BR/>")}</td>
 	            </tr>
+	            <tr>
+                <th scope="row">첨부파일</th>
+                <td colspan="3">
+                    <c:forEach var="row" items="${files}">
+                        <input type="hidden" id="idx" value="${row.IDX}">
+                        <a href="#this" name="file">${row.ORIGINAL_FILE_NAME}</a>
+                        (${row.FILE_SIZE }kb)
+                    </c:forEach>
+                </td>
+            </tr>
 	        </tbody>
 	    </table>
-	    <div class="float-right form-actions">
-		    <button id="update" type="button" class="btn btn-primary">수정하기</button>
-			<button id="list" type="button" class="btn btn-info"><i class="icon-search"></i>목록으로</button>
-	    </div>
+	    <div class="ui grid">
+			<div class="right aligned column">
+				<button id="update" type="button" class="ui green button">수정하기</button>
+				<button id="list" type="button" class="ui grey button">목록으로</button>
+			</div>
+		</div>
      </div>
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
     <script type="text/javascript">
         $(document).ready(function(){
-        	$("#list").click(function(e) {
-        		e.preventDefault();
+        	$("#list").click(function() {
         		fn_openBoardList();
         	});
              
             $("#update").on("click", function(e){
                 e.preventDefault();
                 fn_openBoardUpdate();
+            });
+            
+            $("a[name='file']").on("click", function(e){
+                e.preventDefault();
+                fn_downloadFile($(this));
             });
         });
          
@@ -62,7 +80,15 @@
         function fn_openBoardUpdate(){
             var idx = "${map.IDX}";
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/openBoardUpdate.do' />");
+            comSubmit.setUrl("<c:url value='/openBoardUpdate.do'/>");
+            comSubmit.addParam("idx", idx);
+            comSubmit.submit();
+        }
+        
+        function fn_downloadFile(obj){
+            var idx = obj.parent().find("#idx").val();
+            var comSubmit = new ComSubmit();
+            comSubmit.setUrl("<c:url value='/common/downloadFile.do'/>");
             comSubmit.addParam("idx", idx);
             comSubmit.submit();
         }

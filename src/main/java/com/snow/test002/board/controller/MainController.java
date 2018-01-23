@@ -50,7 +50,8 @@ public class MainController {
 	@RequestMapping(value="/openBoardDetail.do")
 	public String openBoardDetail(CommandMap commandMap, Model model) throws Exception{  
 	    Map<String,Object> map = mainService.selectBoardDetail(commandMap.getMap());
-	    model.addAttribute("map", map);
+	    model.addAttribute("map", map.get("map"));
+	    model.addAttribute("files", map.get("files"));
 	     
 	    return "/main/boardDetail";
 	}
@@ -58,7 +59,8 @@ public class MainController {
 	@RequestMapping(value="/openBoardUpdate.do")
 	public String openBoardUpdate(CommandMap commandMap, Model model) throws Exception{  
 	    Map<String,Object> map = mainService.selectBoardDetail(commandMap.getMap());
-	    model.addAttribute("map", map);
+	    model.addAttribute("map", map.get("map"));
+	    model.addAttribute("files", map.get("files"));
 	     
 	    return "/main/boardUpdate";
 	}

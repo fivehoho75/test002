@@ -5,22 +5,26 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
-	<div class="pt-5 pb-5 mx-auto" style="width: 200px;"><h2>게시판 쓰기</h2></div>
+	<div class="ui grid" style="margin-top:5px;margin-bottom:5px;">
+		<div class="center aligned column"><h2>게시판 쓰기</h2></div>
+	</div>
     <form id="frm" name="frm" enctype="multipart/form-data">
-    <div class="container">
-    	<div class="form-group">
+    <div class="ui container form">
+    	<div class="field">
     		<label for="TITLE">제목</label>
-    		<input type="text" class="form-control" id="title" name="title">
+    		<input type="text" class="ui input" id="title" name="title">
     	</div>
-    	<div class="input-group mb-3">
+    	<div class="field">
     		 <textarea class="form-control" rows="10" cols="100" id="contents" name="contents"></textarea>
     	</div>
-    	<div class="input-group mb-3">
+    	<div class="field">
     		 <input type="file" class="form-control" id="file" name="file">
     	</div>
-        <div class="float-right form-actions mb-3">
-	        <button id="write" type="button" class="btn btn-primary">작성하기</button>
-			<button id="list" type="button" class="btn btn-info">목록으로</button>
+        <div class="ui grid">
+			<div class="right aligned column">
+				<button id="write" type="button" class="ui red button">작성하기</button>
+				<button id="list" type="button" class="ui grey button">목록으로</button>
+			</div>
 		</div>
     </div>
     </form>

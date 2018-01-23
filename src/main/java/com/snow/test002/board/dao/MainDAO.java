@@ -39,4 +39,9 @@ public class MainDAO  extends AbstractDAO {
 	public void insertFile(Map<String, Object> map) {
 		insert("main.insertFile", map);
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectFileList(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("main.selectFileList", map);
+	}
 }

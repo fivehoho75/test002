@@ -12,16 +12,25 @@
      </select>
      
      <select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
-        	SELECT IDX
-			     , HIT_CNT
-			     , CREA_ID
-			     , CREA_DTM
-			     , TITLE
-			     , CONTENTS
-			  FROM TB_BOARD
+       	SELECT IDX
+		     , HIT_CNT
+		     , CREA_ID
+		     , CREA_DTM
+		     , TITLE
+		     , CONTENTS
+		  FROM TB_BOARD
 			 WHERE IDX = #{idx}    
 	</select>
 	
+	<select id="selectFileList" parameterType="hashmap" resultType="hashmap">
+       	SELECT IDX
+		     , ORIGINAL_FILE_NAME
+		     , ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+		  FROM TB_FILE
+		 WHERE BOARD_IDX = #{idx}
+		   AND DEL_GB = 'N'
+	</select>
+
      <insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="idx" keyColumn="IDX">
     <![CDATA[
         INSERT

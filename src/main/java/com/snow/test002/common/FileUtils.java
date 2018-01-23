@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Component("fileUtils")
 public class FileUtils {
-	private static final String filePath = "D:\\90.Workspace\\test002\\files";
+	private static final String filePath = "D:\\90.Workspace\\test002\\files\\";
 	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
         Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
@@ -28,7 +28,7 @@ public class FileUtils {
         List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null;
          
-        String boardIdx = (String)map.get("IDX");
+        String boardIdx = (String)map.get("idx").toString();
          
         File file = new File(filePath);
         if(file.exists() == false){
@@ -55,4 +55,13 @@ public class FileUtils {
         }
         return list;
     }
+	
+	public static byte[] readFileToByteArray(File file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public static String getFilePath() {
+		return filePath;
+	}
 }

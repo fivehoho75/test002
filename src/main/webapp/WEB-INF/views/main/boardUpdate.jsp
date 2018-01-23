@@ -5,10 +5,12 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
-	<div class="container">
+	<div class="ui container">
 	    <form id="frm">
-	    	<div class="pt-5 pb-5 mx-auto" style="width: 200px;"><h2>게시판 상세</h2></div>
-	        <table class="table">
+	    	<div class="ui grid" style="margin-top:5px;margin-bottom:5px;">
+				<div class="center aligned column"><h2>게시판 상세</h2></div>
+			</div>
+	        <table class="ui table">
 	            <colgroup>
 	                <col width="15%"/>
 	                <col width="35%"/>
@@ -34,21 +36,27 @@
 	                <tr>
 	                    <th scope="row">제목</th>
 	                    <td colspan="3">
-	                        <input type="text" class="form-control" id="title" name="title" class="wdp_90" value="${map.TITLE}"/>
+	                    	<div class="ui fluid input">
+	                        	<input type="text" id="title" name="title" class="wdp_90" value="${map.TITLE}"/>
+	                        </div>
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td colspan="4" class="view_text">
-	                        <textarea class="form-control" rows="10" cols="100" title="내용" id="contents" name="contents">${map.CONTENTS}</textarea>
+	                    	<div class="ui form field">
+	                       		<textarea rows="10" cols="100" title="내용" id="contents" name="contents">${map.CONTENTS}</textarea>
+	                        </div>
 	                    </td>
 	                </tr>
 	            </tbody>
 	        </table>
 	    </form>
-		<div class="float-right form-actions">
-			<button id="update" type="button" class="btn btn-primary">저장하기</button>
-			<button id="delete" type="button" class="btn btn-warning">삭제하기</button>
-			<button id="list" type="button" class="btn btn-info">목록으로</button>
+		<div class="ui grid">
+			<div class="right aligned column">
+				<button id="update" type="button" class="ui red button">저장하기</button>
+				<button id="delete" type="button" class="ui orange button">삭제하기</button>
+				<button id="list" type="button" class="ui grey button">목록으로</button>
+			</div>
 		</div> 
 	</div>
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
